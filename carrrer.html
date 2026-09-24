@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQUA NEST - Premium Packaged Drinking Water</title>
+    <link rel="icon" type="image/png" href="assets/images/logo.jpg">
+    <link rel="stylesheet" href="src/input.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <!-- AOS Library JS - Add before closing <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your application to join the Aqua Nest team! Your resume and details have been received. Our HR team will get in touch with you.');
+        this.reset();
+    });
+</script>
+</body> tag -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Fredoka:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Custom CSS Variables */
+        :root {
+            --vh: 100vh;
+            --navbar-height-mobile: 70px;
+            --navbar-height-desktop: 90px;
+        }
+
+        /* Font Families */
+        .nav-link,
+        .quote-btn {
+            font-family: 'Righteous', cursive;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <style>
+    @media (max-width: 1023px) {
+
+        .mobile-menu-link,
+        .mobile-quote-btn {
+            font-family: 'Fredoka', sans-serif;
+        }
+    }
+
+    /* Nav Underline Animation */
+    .nav-underline {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .navbar-scrolled .nav-underline {
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+    }
+
+    .nav-link {
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link:hover .nav-underline {
+
+        width: 100%;
+    }
+
+    /* Hamburger Animation */
+    .hamburger-line {
+        transition: all 0.35s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .hamburger-btn.active .line-1 {
+        transform: translateY(0) rotate(45deg);
+    }
+
+    .hamburger-btn.active .line-2 {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    .hamburger-btn.active .line-3 {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    /* Mobile Menu - WHITE Background */
+    .mobile-menu {
+        height: calc(var(--vh, 1vh) * 100);
+        transform: translateX(-100%);
+        transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+        background: #ffffff;
+        /* White background */
+    }
+
+    .mobile-menu.active {
+        transform: translateX(0);
+    }
+
+    /* Mobile Menu Content Height Fix */
+    .mobile-menu-content {
+        min-height: calc(var(--vh, 1vh) * 100);
+    }
+
+    /* Mobile Link - BLACK text with GRADIENT on hover */
+    .mobile-menu-link {
+        position: relative;
+        color: #000000;
+        /* Black text normally */
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu-link:hover {
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: scale(1.05);
+    }
+
+    /* Mobile Link Underline Effect */
+    .mobile-menu-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 4px;
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+        transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 10px;
+        box-shadow: 0 3px 15px rgba(230, 79, 96, 0.4);
+    }
+
+    .mobile-menu-link:hover::after {
+        width: 100px;
+    }
+
+    /* Staggered Animation Delays */
+    .mobile-menu.active .mobile-menu-link:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .mobile-menu.active .mobile-menu-link:nth-child(2) {
+        transition-delay: 0.18s;
+    }
+
+    .mobile-menu.active .mobile-menu-link:nth-child(3) {
+        transition-delay: 0.26s;
+    }
+
+    .mobile-menu.active .mobile-menu-link:nth-child(4) {
+        transition-delay: 0.34s;
+    }
+
+    .mobile-menu.active .mobile-menu-link:nth-child(5) {
+        transition-delay: 0.42s;
+    }
+
+    .mobile-menu.active .mobile-quote-btn {
+        transition-delay: 0.5s;
+    }
+
+    .mobile-menu.active .mobile-menu-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Smooth Scroll */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Logo overflow and positioning */
+    .logo-container {
+        position: relative;
+        z-index: 10;
+    }
+
+    .logo-container img {
+        margin-bottom: -15px;
+    }
+
+    /* Hide hamburger when menu is active */
+    .hamburger-btn.active {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Close button - ensure only one is visible */
+    .close-menu-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.active~.close-menu-btn {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Close button styling - gradient on hover */
+    .close-menu-btn {
+        background: rgba(0, 0, 0, 0.1);
+        color: #000000;
+    }
+
+    .close-menu-btn:hover {
+        background: linear-gradient(135deg, #e64f60 0%, #914394 100%);
+        color: #ffffff;
+    }
+
+    /* Landscape Mode */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .mobile-menu-content {
+            justify-content: flex-start !important;
+            padding-top: 100px !important;
+        }
+
+        .mobile-menu-link {
+            font-size: 1.5rem !important;
+            padding: 0.375rem 0.75rem !important;
+        }
+
+        .mobile-quote-btn {
+            font-size: 1rem !important;
+            padding: 0.625rem 1.5rem !important;
+        }
+    }
+</style>
+<header class="overflow-x-hidden">
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full top-0 z-[1000] transition-all duration-500">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 lg:h-24">
+
+                <!-- Left Menu - Desktop -->
+                <div class="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-1">
+                    <a href="index.html"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        Home
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="products.html"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        Products
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="index.html#about"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        About Us
+                        <span class="nav-underline"></span>
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="logo-container flex-shrink-0">
+                    <a href="index.html">
+                        <img src="assets/images/logo-removebg.png" alt="AQUA NEST Logo"
+                            class="object-contain w-32 sm:w-40 md:w-44 lg:w-48 xl:w-52 transition-all duration-400 hover:scale-105 hover:drop-shadow-[0_0_20px_rgba(230,79,96,0.5)]">
+
+                    </a>
+                </div>
+
+                <!-- Right Menu - Desktop -->
+                <div class="hidden lg:flex items-center space-x-8 xl:space-x-10 flex-1 justify-end">
+                    <a href="distributer.html"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        Distributer
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="carrrer.html"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        Carrrer
+                        <span class="nav-underline"></span>
+                    </a>
+                    <a href="index.html#contact"
+                        class="nav-link relative transition-all duration-300 text-lg tracking-wide uppercase pb-1">
+                        Contact
+                        <span class="nav-underline"></span>
+                    </a>
+                </div>
+
+                <!-- Hamburger Button - Mobile -->
+                <div class="lg:hidden ml-auto flex items-center">
+                    <button id="mobileMenuBtn"
+                        class="hamburger-btn w-14 h-14 sm:w-[50px] sm:h-[50px] bg-gradient-to-br from-red-600 to-[#914394] rounded-sm flex items-center justify-center transition-all duration-[350ms] shadow-[0_6px_25px_rgba(230,79,96,0.4)] hover:shadow-[0_10px_35px_rgba(230,79,96,0.6)] hover:-translate-y-1 hover:scale-105 active:translate-y-0 active:scale-[1.02] relative z-[1001]">
+                        <div class="relative w-8 h-6 sm:w-[26px] sm:h-5 flex items-center justify-center">
+                            <span
+                                class="hamburger-line line-1 absolute w-[30px] sm:w-[26px] h-[3.5px] sm:h-[3px] bg-white rounded -translate-y-[9px]"></span>
+                            <span
+                                class="hamburger-line line-2 absolute w-[30px] sm:w-[26px] h-[3.5px] sm:h-[3px] bg-white rounded translate-y-0 opacity-100"></span>
+                            <span
+                                class="hamburger-line line-3 absolute w-[30px] sm:w-[26px] h-[3.5px] sm:h-[3px] bg-white rounded translate-y-[9px]"></span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+        class="mobile-menu fixed top-0 left-0 w-full h-screen z-[999] overflow-y-auto overflow-x-hidden">
+
+        <!-- Mobile Menu Content -->
+        <div
+            class="mobile-menu-content flex flex-col items-center justify-center w-full px-5 py-20 sm:px-3 sm:py-[60px] space-y-6 sm:space-y-8 box-border">
+            <a href="index.html#home"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                Home
+            </a>
+            <a href="products.html"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                Products
+            </a>
+            <a href="index.html#about"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                About Us
+            </a>
+            <a href="distributer.html"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                Distributer
+            </a>
+            <a href="carrrer.html"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                Carrrer
+            </a>
+            <a href="index.html#contact"
+                class="mobile-menu-link relative text-[2.5rem] md:text-[2.75rem] sm:text-[2rem] max-[400px]:text-[1.75rem] font-normal tracking-wide uppercase px-6 sm:px-3 py-3 sm:py-2 max-[400px]:py-2 inline-block text-center opacity-0 translate-y-[50px] transition-all duration-[400ms] will-change-[transform,opacity] active:scale-95">
+                Contact
+            </a>
+        </div>
+    </div>
+
+    <!-- Single Close Button - Outside Mobile Menu -->
+    <button id="closeMobileMenu"
+        class="close-menu-btn w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-md backdrop-blur-lg hover:rotate-90 hover:scale-110 active:rotate-90 active:scale-95 transition-all duration-300">
+        <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+</header>
+<script>
+    // iOS Safari viewport height fix
+    function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        if (window.pageYOffset > 50) {
+            navbar.classList.add('navbar-scrolled', 'bg-white', 'backdrop-blur-md');
+            navbar.classList.remove('bg-transparent');
+            navbar.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12)';
+            // Change nav link colors
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-white', 'hover:text-white/80');
+                link.classList.add('!text-gray-700', 'hover:!text-red-600');
+            });
+        } else {
+            navbar.classList.remove('navbar-scrolled', 'bg-white', 'backdrop-blur-md');
+            navbar.classList.add('bg-transparent');
+            navbar.style.boxShadow = 'none';
+            // Restore nav link colors
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.add('text-white', 'hover:text-white/80');
+                link.classList.remove('!text-gray-700', 'hover:!text-red-600');
+            });
+        }
+    }, { passive: true });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+
+    mobileMenuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        mobileMenu.classList.add('active');
+        mobileMenuBtn.classList.add('active');
+        body.classList.add('overflow-hidden', 'fixed', 'w-full');
+    });
+
+    function closeMobileMenuFunc() {
+        mobileMenu.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        body.classList.remove('overflow-hidden', 'fixed', 'w-full');
+    }
+
+    closeMobileMenu.addEventListener('click', closeMobileMenuFunc);
+
+    document.querySelectorAll('.mobile-menu-link').forEach(link => {
+        link.addEventListener('click', function () {
+            if (this.tagName === 'A') {
+                setTimeout(closeMobileMenuFunc, 300);
+            }
+        });
+    });
+
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            const hashIndex = href.indexOf('#');
+            if (hashIndex === -1) return;
+            const hash = href.substring(hashIndex);
+            const path = href.substring(0, hashIndex);
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+            const isCurrentPage = !path || path === currentPath || (currentPath === 'index.html' && (path === 'index' || path === 'index.html'));
+
+            if (isCurrentPage && hash) {
+                const target = document.querySelector(hash);
+                if (target) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: target.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                    if (history.pushState) {
+                        history.pushState(null, null, hash);
+                    }
+                }
+            }
+        });
+    });
+
+    if (window.location.hash) {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 90,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        });
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            closeMobileMenuFunc();
+        }
+    });
+
+    mobileMenu.addEventListener('touchmove', function (e) {
+        if (e.target === mobileMenu) e.preventDefault();
+    }, { passive: false });
+</script>    <div class="container mx-auto px-4 py-12 mt-28 md:mt-32">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white border-t-4 border-red-600 rounded-lg shadow-lg overflow-hidden">
+
+                <!-- Header Section -->
+                <div class="bg-gradient-to-r from-red-600 to-purple-600 px-8 sm:px-10 py-8 sm:py-10">
+                    <h3 class="text-3xl sm:text-4xl font-black text-white mb-3"
+                        style="font-family: 'Righteous', cursive;">
+                        Join Aqua Nest Team
+                    </h3>
+                    <p class="text-white text-lg opacity-90" style="font-family: 'Fredoka', sans-serif;">
+                        Build your career with India's leading water solutions provider. Apply now and become part of
+                        our growing family.
+                    </p>
+                </div>
+
+                <!-- Form Section -->
+                <div class="px-8 sm:px-10 py-10">
+                    <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
+
+                        <!-- Name & Phone Row -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                                    style="font-family: 'Fredoka', sans-serif;">
+                                    Full Name *
+                                </label>
+                                <input type="text" name="name"
+                                    class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-md focus:border-red-600 focus:bg-white focus:outline-none transition-all"
+                                    placeholder="Enter your full name" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2"
+                                    style="font-family: 'Fredoka', sans-serif;">
+                                    Phone Number *
+                                </label>
+                                <input type="tel" name="phone" maxlength="10" pattern="[0-9]{10}"
+                                    class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-md focus:border-red-600 focus:bg-white focus:outline-none transition-all"
+                                    placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2"
+                                style="font-family: 'Fredoka', sans-serif;">
+                                Email Address *
+                            </label>
+                            <input type="email" name="email"
+                                class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-md focus:border-red-600 focus:bg-white focus:outline-none transition-all"
+                                placeholder="your@email.com" required>
+                        </div>
+
+                        <!-- Apply For -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2"
+                                style="font-family: 'Fredoka', sans-serif;">
+                                Apply For *
+                            </label>
+                            <select name="apply_for"
+                                class="w-full px-4 py-3 bg-gray-50 border-2 border-gray-200 rounded-md focus:border-red-600 focus:bg-white focus:outline-none transition-all"
+                                required>
+                                <option value="">Select Position</option>
+                                <option value="Sales Executive">Sales Executive</option>
+                                <option value="Marketing Manager">Marketing Manager</option>
+                                <option value="Distribution Manager">Distribution Manager</option>
+                                <option value="Quality Control Officer">Quality Control Officer</option>
+                                <option value="Production Supervisor">Production Supervisor</option>
+                                <option value="Delivery Executive">Delivery Executive</option>
+                                <option value="Customer Support">Customer Support</option>
+                                <option value="Accounts Manager">Accounts Manager</option>
+                                <option value="HR Executive">HR Executive</option>
+                                <option value="Warehouse Manager">Warehouse Manager</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Resume Upload -->
+                        <div
+                            class="bg-gradient-to-br from-red-50 to-purple-50 p-6 rounded-lg border-2 border-dashed border-red-300">
+                            <label class="block text-sm font-semibold text-gray-700 mb-3"
+                                style="font-family: 'Fredoka', sans-serif;">
+                                Upload Resume *
+                            </label>
+                            <p class="text-xs text-gray-600 mb-4" style="font-family: 'Fredoka', sans-serif;">
+                                Upload your latest resume/CV
+                                <br>
+                                <span class="text-red-600 font-semibold">Format: PDF, DOC, DOCX | Max Size: 5MB</span>
+                            </p>
+                            <input type="file" name="resume" accept=".pdf,.doc,.docx"
+                                class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-md focus:border-red-600 focus:outline-none transition-all file:mr-4 file:py-2 file:px-6 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-red-600 file:to-purple-600 file:text-white hover:file:from-red-700 hover:file:to-purple-700 file:cursor-pointer"
+                                required>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-red-600 to-purple-600 text-white font-bold py-4 px-8 rounded-lg hover:from-red-700 hover:to-purple-700 transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl"
+                            style="font-family: 'Fredoka', sans-serif;">
+                            <span class="flex items-center justify-center">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                Submit Application
+                            </span>
+                        </button>
+
+                    </form>
+                </div>
+
+                <!-- Footer Note -->
+                <div class="bg-gray-50 px-8 sm:px-10 py-6 border-t border-gray-200">
+                    <p class="text-sm text-gray-600 text-center" style="font-family: 'Fredoka', sans-serif;">
+                        <span class="font-semibold text-red-600">Questions?</span> Reach us at
+                        <a href="mailto:careers@aquanest.com"
+                            class="text-purple-600 hover:underline font-semibold">careers@aquanest.com</a>
+                        or call <span class="font-semibold">1800-XXX-XXXX</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modern Minimal Footer -->
+<footer class="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+
+    <!-- Subtle Background Pattern -->
+    <div class="absolute inset-0 opacity-5"
+        style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <!-- Gradient Glow -->
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-blue-500/10 to-transparent blur-2xl">
+    </div>
+
+    <div class="relative max-w-[1400px] mx-auto px-6 py-10">
+
+        <!-- Main Footer Content -->
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+
+            <!-- Logo Section -->
+            <div class="flex items-center gap-4">
+                <img src="assets/images/logo-removebg.png" alt="AQUA NEST" class="h-12 w-auto">
+                <div>
+                    <h3 class="text-xl font-bold" style="font-family: 'Righteous', cursive;">AQUA NEST</h3>
+                    <p class="text-sm text-gray-400" style="font-family: 'Fredoka', sans-serif;">Pure Refreshment</p>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="flex gap-8 text-base font-medium" style="font-family: 'Fredoka', sans-serif;">
+                <a href="products.html" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105">
+                    Products
+                </a>
+                <a href="index.html#about" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105">
+                    About Us
+                </a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-white transition-all duration-300 hover:scale-105">
+                    Contact
+                </a>
+            </nav>
+
+            <!-- Social Media -->
+            <div class="flex gap-4">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+                    class="group relative w-11 h-11 bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:from-blue-500 hover:to-blue-600 transition-all duration-300 hover:scale-110 border border-white/10 text-white">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                    class="group relative w-11 h-11 bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:from-pink-500 hover:to-purple-600 transition-all duration-300 hover:scale-110 border border-white/10 text-white">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform fill-none stroke-current" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                    class="group relative w-11 h-11 bg-gradient-to-br from-sky-500/20 to-blue-600/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:from-sky-500 hover:to-blue-600 transition-all duration-300 hover:scale-110 border border-white/10 text-white">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
+                    class="group relative w-11 h-11 bg-gradient-to-br from-blue-600/20 to-indigo-700/20 backdrop-blur-sm rounded-xl flex items-center justify-center hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 hover:scale-110 border border-white/10 text-white">
+                    <svg class="w-5 h-5 group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.78a1.62 1.62 0 1 0 0 3.24 1.62 1.62 0 0 0 0-3.24z"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6"></div>
+
+        <!-- Bottom Section -->
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-sm text-gray-400" style="font-family: 'Fredoka', sans-serif;">
+                &copy; <span class="current-year">2026</span> <span class="text-white font-semibold">AQUA NEST</span>. All rights reserved.
+            </p>
+
+            <!-- Additional Links -->
+            <div class="flex gap-6 text-sm text-gray-400" style="font-family: 'Fredoka', sans-serif;">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+
+
+            <p class="text-sm text-gray-500 flex items-center gap-2" style="font-family: 'Fredoka', sans-serif;">
+                Design and Developed By : <span class="text-red-500 animate-pulse"> <a
+                        href="https://github.com/vikas0199/" target="_blank"
+                        class="text-transparent bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text hover:from-purple-300 hover:to-blue-300 font-semibold transition-all duration-300">
+                        Vikas Kumar
+                    </a></span>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    // Dynamically set current copyright year
+    document.querySelectorAll('.current-year').forEach(el => el.textContent = new Date().getFullYear());
+</script>
+
+<style>
+    /* Ensure PNG logo renders crisp */
+    footer img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+</style><script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Thank you for your application to join the Aqua Nest team! Your resume and details have been received. Our HR team will get in touch with you.');
+        this.reset();
+    });
+</script>
+</body>
+
+</html>
